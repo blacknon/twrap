@@ -1,0 +1,19 @@
+[tasks.demo]
+description = "Render all twrap VHS demos"
+depends = ["demo-vim", "demo-htop"]
+
+[tasks.demo-vim]
+description = "Render the vim and less VHS demo"
+run = """
+  mkdir -p tmp
+  rm -f tmp/demo.txt
+  vhs img/demo_vim.tape
+"""
+
+[tasks.demo-htop]
+description = "Render the htop VHS demo"
+run = """
+  mkdir -p ./tmp/twrap-artifacts
+  rm -f ./tmp/twrap-artifacts/htop-demo-*
+  vhs img/demo_htop_screenshot.tape
+"""
