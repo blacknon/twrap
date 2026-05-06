@@ -13,9 +13,6 @@ on:
 permissions:
   contents: write
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   build-assets:
     name: Build Release Asset (${{ matrix.target }})
@@ -39,7 +36,7 @@ jobs:
             archive_ext: tar.gz
             binary_name: twrap
             use_cross: true
-          - os: macos-13
+          - os: macos-15-intel
             target: x86_64-apple-darwin
             archive_ext: tar.gz
             binary_name: twrap
@@ -49,7 +46,7 @@ jobs:
             archive_ext: tar.gz
             binary_name: twrap
             use_cross: false
-          - os: windows-latest
+          - os: windows-2022
             target: x86_64-pc-windows-msvc
             archive_ext: zip
             binary_name: twrap.exe
@@ -112,7 +109,7 @@ jobs:
           "$hash  $asset" | Out-File "$asset.sha256" -Encoding ascii
 
       - name: Upload release archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: release-${{ matrix.target }}
           path: |
@@ -147,14 +144,14 @@ jobs:
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
       - name: Download release assets
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: release-artifacts
           pattern: release-*
           merge-multiple: true
 
       - name: Create draft release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.release_tag.outputs.tag }}
           name: ${{ steps.release_tag.outputs.tag }}
