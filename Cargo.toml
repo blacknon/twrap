@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2024"
 description = "A TUI wrapper for applying rules to live terminal screens."
 license = "MIT"
-s
 
 [dependencies]
 anyhow = "1.0"
