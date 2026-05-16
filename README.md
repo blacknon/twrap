@@ -18,8 +18,6 @@ cargo install twrap
 
 ### Use vim & less
 
-<img src="./img/demo_vim.gif" width=720>
-
 This demo wraps both `vim` and `less` with the same live screen rules.
 `twrap` highlights `ERROR` lines and rewrites `user=...` to `user=hidden` on screen, so the sensitive value is hidden in the TUI while the original file content stays unchanged.
 

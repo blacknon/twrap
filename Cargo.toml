@@ -4,8 +4,7 @@ version = "0.1.0"
 edition = "2024"
 description = "A TUI wrapper for applying rules to live terminal screens."
 license = "MIT"
-repository = "https://github.com/blacknon/twrap"
-homepage = "https://github.com/blacknon/twrap"
+s
 
 [dependencies]
 anyhow = "1.0"
